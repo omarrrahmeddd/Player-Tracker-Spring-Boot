@@ -1,6 +1,9 @@
-package com.koora;
+package com.koora.controller;
 
 
+import com.koora.dto.PlayerResponseDTO;
+import com.koora.service.PlayerService;
+import com.koora.entity.Player;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,16 +23,16 @@ public class PlayerController {
         return playerService.getAllPlayers();
     }
     @PostMapping
-    public Player createplayer(@Valid @RequestBody Player newplayer){
+    public PlayerResponseDTO createplayer(@Valid @RequestBody Player newplayer){
         return playerService.createplayer(newplayer);
     }
     @GetMapping("/{id}")
-    public Player getPlayerbyId (@PathVariable Integer id){
+    public PlayerResponseDTO getPlayerbyId (@PathVariable Integer id){
         return playerService.getPlayerbyId(id);
     }
 
     @PutMapping("/{id}")
-    public Player updateplayer ( @PathVariable   Integer id,@Valid @RequestBody Player myplayer){
+    public PlayerResponseDTO updateplayer ( @PathVariable   Integer id,@Valid @RequestBody Player myplayer){
       return  playerService.updateplayer(id, myplayer);
     }
     @DeleteMapping("/{id}")

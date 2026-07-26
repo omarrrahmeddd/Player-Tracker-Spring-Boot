@@ -1,4 +1,4 @@
-package com.koora;
+package com.koora.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
