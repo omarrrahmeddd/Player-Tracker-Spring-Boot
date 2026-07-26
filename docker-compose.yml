@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16
+    container_name: koora-postgres
+    environment:
+      POSTGRES_DB: koora
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5433:5432"
+    volumes:
+      - koora_pgdata:/var/lib/postgresql/data
+
+volumes:
+  koora_pgdata:
