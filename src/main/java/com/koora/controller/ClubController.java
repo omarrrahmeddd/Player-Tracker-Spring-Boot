@@ -22,10 +22,22 @@ public class ClubController {
     public List<ClubResponseDTO> getAllClubs(){
         return clubService.getAllClubs();
     }
+    @GetMapping("/{id}")
+    public ClubResponseDTO getClubBYid(@PathVariable Integer id){
+        return clubService.getClubBYid(id);
+    }
 
     @PostMapping
     public ClubResponseDTO createClub(@RequestBody @Valid Club newClub){
         return clubService.createClub(newClub);
+    }
+    @PutMapping("/{id}")
+    public ClubResponseDTO updateClub(@PathVariable Integer id,@RequestBody @Valid Club updatedClub){
+        return clubService.updateClub(id, updatedClub);
+    }
+    @DeleteMapping("/{id}")
+    public void deleteClubBYid(@PathVariable Integer id){
+        clubService.deleteClubBYid(id);
     }
 
 }

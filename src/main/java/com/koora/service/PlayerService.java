@@ -1,6 +1,6 @@
 package com.koora.service;
 
-import com.koora.exception.PlayerNotFoundException;
+import com.koora.exception.NotFoundException;
 import com.koora.dto.PlayerResponseDTO;
 import com.koora.repo.PlayerRepo;
 import com.koora.entity.Player;
@@ -33,12 +33,12 @@ public class PlayerService {
 
     public PlayerResponseDTO getPlayerbyId (Integer id){
      Player savePlayer=   playerRepo.findById(id)
-        .orElseThrow(() -> new PlayerNotFoundException("player not found"));
+        .orElseThrow(() -> new NotFoundException("player not found"));
      return PlayerMapper.INSTANCE.toDto(savePlayer);
     }
     public PlayerResponseDTO updateplayer (Integer id, Player myplayer){
         Player neededplayer = playerRepo.findById(id)
-                .orElseThrow(() -> new PlayerNotFoundException("Player not found"));
+                .orElseThrow(() -> new NotFoundException("Player not found"));
         neededplayer.setName(myplayer.getName());
         neededplayer.setClub(myplayer.getClub());
         neededplayer.setNationalities(myplayer.getNationalities());
