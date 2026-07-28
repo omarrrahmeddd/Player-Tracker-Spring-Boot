@@ -29,7 +29,9 @@ public class Player {
     @NotNull
     @ManyToOne
     private Club club;
+    @Enumerated(EnumType.STRING)
     private Position position;//enum
+
 
 
     @ManyToMany

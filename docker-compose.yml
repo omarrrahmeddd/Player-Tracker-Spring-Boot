@@ -11,5 +11,17 @@ services:
     volumes:
       - koora_pgdata:/var/lib/postgresql/data
 
+  app:
+    build: .
+    container_name: koora-app
+    depends_on:
+      - db
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/koora
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 1234
+
 volumes:
   koora_pgdata:
